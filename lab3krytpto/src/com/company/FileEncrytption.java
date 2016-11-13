@@ -25,10 +25,12 @@ public class FileEncrytption {
         SecretKey secretKey = KeystoreMethods.getKeyFromKeystore(pass, keystoreLocation,
                 keyAlias);
         if (encParam.equals("CTR")){
-            cipherParameters = "AES/CTR/PKCS5Padding";
+            cipherParameters = "AES/CTR/NoPadding";
         }
-        else if(encParam.equals("GCM"))
-            cipherParameters = "";
+        else if(encParam.equals("GCM")) {
+            cipherParameters = "AES/GCM/NoPadding";
+
+        }
         doCrypto(Cipher.ENCRYPT_MODE, secretKey, inputFile, outputFile);
     }
 
@@ -59,6 +61,8 @@ public class FileEncrytption {
         try {
             Cipher cipher = Cipher.getInstance(cipherParameters);
             cipher.init(cipherMode, secretKey, ivspec);
+            if (cipherParameters.equals("AES/GCM/NoPadding"))
+                cipher.getIV();
             FileInputStream inputStream = new FileInputStream(inputFile);
             byte[] inputBytes = new byte[(int) inputFile.length()];
             inputStream.read(inputBytes);
