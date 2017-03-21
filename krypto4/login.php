@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>Login Page</title>
+    <title>Login Page trtalrallra</title>
 
     <style type = "text/css">
         body {
