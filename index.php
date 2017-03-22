@@ -1,5 +1,5 @@
 <?php
-$connectstr_dbhost = '';
+$connectstr_dbhost = 'wwww';
 $connectstr_dbname = 'walsie';
 $connectstr_dbusername = 'jol';
 $connectstr_dbpassword = 'test';
